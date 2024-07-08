@@ -8,65 +8,35 @@
 import SwiftUI
 
 struct TabBar: View {
-    @State var selectedTab: Tab = .home
+    @AppStorage("selectedTab") var selectedTab: Tab = .home
     @State var color: Color = .teal
     @State var tabItemWidth : CGFloat
     
     var body: some View {
         
-        
-        ZStack(alignment: .bottom) {
-            
-//            if selectedTab == .home {
-//                ContentView()
-//                    
-//            }
-//            
-//            else if selectedTab == .explore {
-//                AccountView()
-//            }
-            
-            Group {
-                switch selectedTab {
-                case .home:
-                    ContentView()
-                case .explore:
-                    AccountView()
-                case .notifications:
-                    AccountView()
-                case .library:
-                    AccountView()
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            
-            
-
-            HStack {
-                buttons
-            }
-            .padding(.horizontal, 8)
-            .padding(.top, 14)
-            .frame(height: 88, alignment: .top)
-            .background(.ultraThinMaterial, in:
-                            RoundedRectangle(cornerRadius: 34, style: .continuous)
-            )
-            .background(
-                background
-            )
+        HStack {
+            buttons
+        }
+        .padding(.horizontal, 8)
+        .padding(.top, 14)
+        .frame(height: 88, alignment: .top)
+        .background(.ultraThinMaterial, in:
+                        RoundedRectangle(cornerRadius: 34, style: .continuous)
+        )
+        .background(
+            background
+        )
 //            .strokeStyle(cornerRadius: 34)
 //            .frame(maxHeight: .infinity, alignment: .bottom)
 //            .ignoresSafeArea()
-            
-            .overlay(
-                overlay
-            )
-            .strokeStyle(cornerRadius: 34)
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .ignoresSafeArea()
-            
-        }
+        
+        .overlay(
+            overlay
+        )
+        .strokeStyle(cornerRadius: 34)
+        .frame(maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea()
+       
     }
     
     var overlay: some View{
