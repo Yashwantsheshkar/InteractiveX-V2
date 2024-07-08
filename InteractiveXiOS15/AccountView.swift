@@ -10,13 +10,16 @@ import SwiftUI
 struct AccountView: View {
     
     @State var isDeleted = false
+    @State var isPin = false
     
     var body: some View {
         NavigationStack {
             List {
+                
                 profile
                 menu
                 links
+                
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Account")
@@ -31,17 +34,20 @@ struct AccountView: View {
                 .symbolVariant(.circle.fill)
                 .font(.system(size: 32))
                 .symbolRenderingMode(.palette)
-                .foregroundStyle(.blue, .blue.opacity(0.5))
+                .foregroundStyle(.blue, .blue.opacity(0.6))
                 .padding()
                 .background(Circle().fill(.ultraThinMaterial))
                 .background(
-                    Image(systemName: "hexagon")
-                        .symbolVariant(.fill)
-                        .foregroundStyle(.blue)
+                    HexagonView()
                         .font(.system(size: 200))
                         .offset(x: -55, y: -100)
-                        
             )
+                .background(
+                    BlobView()
+                        .offset(x:200)
+                        .scaleEffect(0.5)
+                )
+                
             Text("Yashwant S.")
                 .font(.title.weight(.bold))
             HStack {
@@ -56,10 +62,8 @@ struct AccountView: View {
         .frame(maxWidth: .infinity)
         .padding()
     }
-    
-    
+        
     //MARK: - MENU
-    
     
     var menu: some View{
         
@@ -83,7 +87,6 @@ struct AccountView: View {
         
     }
     
-    
     //MARK: - LINKS
     
     var links: some View {
@@ -105,11 +108,10 @@ struct AccountView: View {
                         Label("Delete", systemImage: "trash")
                     })
                     .tint(.red)
+                    pinButton
                     
-                    Button {} label: {
-                        Label("Pin", systemImage: "pin")
-                    }
-                    .tint(.yellow)
+                    
+                    
             }
             }
             
@@ -123,13 +125,33 @@ struct AccountView: View {
                     Image(systemName: "link")
                         .tint(.secondary)
                 }
+                
+            }
+            .swipeActions{
+                pinButton
             }
             
         }
         
     }
     
-    
+    var pinButton: some View{
+        
+        Button { isPin.toggle() } label: {
+            
+            if isPin == true {
+                Label("Unpin", systemImage: "pin.slash")
+                    
+            }
+            
+            else {
+                Label("Pin", systemImage: "pin")
+                    
+            }
+        }
+        .tint(isPin ? .gray : .yellow)
+    }
+        
 }
 
 #Preview {

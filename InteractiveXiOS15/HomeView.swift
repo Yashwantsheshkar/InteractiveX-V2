@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  InteractiveXiOS15
 //
-//  Created by Yashwant Sheshkar on 30/06/24.
+//  Created by Yashwant Sheshkar on 08/07/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Spacer()
@@ -66,13 +66,9 @@ struct ContentView: View {
                 .frame(height: 230)
                 .offset(CGSize(width: 32.0, height: -80.0))
         )
-                
-        
-        
-        
     }
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
