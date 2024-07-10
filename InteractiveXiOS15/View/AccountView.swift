@@ -38,15 +38,16 @@ struct AccountView: View {
                 .padding()
                 .background(Circle().fill(.ultraThinMaterial))
                 .background(
-                    HexagonView()
-                        .font(.system(size: 200))
-                        .offset(x: -55, y: -100)
-            )
-                .background(
                     BlobView()
                         .offset(x:200)
                         .scaleEffect(0.5)
                 )
+                .background(
+                    HexagonView()
+                        .font(.system(size: 200))
+                        .offset(x: -55, y: -100)
+            )
+                
                 
             Text("Yashwant S.")
                 .font(.title.weight(.bold))

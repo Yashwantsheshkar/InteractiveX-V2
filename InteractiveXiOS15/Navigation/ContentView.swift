@@ -13,7 +13,7 @@ struct ContentView: View {
         
         
         ZStack(alignment: .bottom) {
-            Group {
+            
                 switch selectedTab {
                 case .home:
                     HomeView()
@@ -24,10 +24,13 @@ struct ContentView: View {
                 case .library:
                     AccountView()
                 }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            TabBar( tabItemWidth: 0)
+            
+            TabBar(tabItemWidth: 0)
+            
       }
+        .safeAreaInset(edge: .bottom) {
+            Color.clear.frame(height: 44)
+        }
     }
 }
 #Preview {
