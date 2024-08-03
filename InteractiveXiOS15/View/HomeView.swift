@@ -10,8 +10,13 @@ import SwiftUI
 struct HomeView: View {
     
     @State var hasScrolled = false
+    @Namespace var namespace
+    @State var show = false
+    @State var showStatusBar = true
     
     var body: some View {
+
+
         ZStack {
             Color("Background")
                 .ignoresSafeArea()
@@ -20,22 +25,25 @@ struct HomeView: View {
                 scrollDetection
                 
                 featured
-                
-                Color.clear.frame(height: 1000)
-            }
-            .coordinateSpace(name: "scroll")
-            .onPreferenceChange(ScrollPrefereceKye.self, perform: { value in
-                
-                withAnimation(.easeInOut) {
-                    if value < 0{
-                        hasScrolled = true
-                    }
-                    else{
-                        hasScrolled = false
-                    }
+
+                Text("Courses".uppercased())
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
+
+                if !show{
+                    CourseItem(namespace: namespace, show: $show)
+                        .onTapGesture(){
+                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                show.toggle()
+                                showStatusBar = false
+                            }
+                        }
                 }
                 
-            })
+            }
+            .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .top, content: {
                 Color.clear.frame(height: 70)
             })
@@ -43,8 +51,24 @@ struct HomeView: View {
                 NavigationBar(title: "Featured", hasScrolled: $hasScrolled)
                     
         )
+            if show{
+                CourseView(namespace: namespace, show: $show)
+                    .zIndex(1.0)
+                    .transition(.asymmetric(insertion: .opacity.animation(.easeInOut(duration: 0.1)), removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))))
+            }
+            
         }
-    }
+        .statusBar(hidden: !showStatusBar)
+        .onChange(of: show) { newValue in
+            withAnimation {
+                if newValue {
+                    showStatusBar = false
+                }else {
+                    showStatusBar = true
+                }
+            }
+            
+        }    }
     
     var scrollDetection: some View {
         GeometryReader{ proxy in
@@ -53,6 +77,18 @@ struct HomeView: View {
             
         }
         .frame(height: 0)
+        .onPreferenceChange(ScrollPrefereceKye.self, perform: { value in
+            
+            withAnimation(.easeInOut) {
+                if value < 0{
+                    hasScrolled = true
+                }
+                else{
+                    hasScrolled = false
+                }
+            }
+            
+        })
     }
     
     var featured: some View {
