@@ -14,6 +14,7 @@ struct HomeView: View {
     @State var show = false
     @State var showStatusBar = true
     @State var selectedID = UUID()
+    @EnvironmentObject var model: Model
     
     var body: some View {
 
@@ -39,6 +40,7 @@ struct HomeView: View {
                             .onTapGesture(){
                                 withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                                     show.toggle()
+                                    model.showDetail.toggle()
                                     showStatusBar = false
                                     selectedID = course.id
                                 }
@@ -101,7 +103,7 @@ struct HomeView: View {
             withAnimation(.easeInOut) {
                 if value < 0{
                     hasScrolled = true
-                }
+               }
                 else{
                     hasScrolled = false
                 }
@@ -148,6 +150,10 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+            .preferredColorScheme(.dark)
+            .environmentObject(Model())
+    }
 }

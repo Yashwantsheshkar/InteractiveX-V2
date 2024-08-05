@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E183E372C613F4A00E1E5BD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E183E362C613F4A00E1E5BD /* Model.swift */; };
 		6E18ADBF2C3D79E9003DC6CD /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E18ADBE2C3D79E9003DC6CD /* PreferenceKeys.swift */; };
 		6E2AC5E52C3C61DA00EFD937 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2AC5E42C3C61DA00EFD937 /* HomeView.swift */; };
 		6E2AC5EC2C3C6B6700EFD937 /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2AC5EB2C3C6B6700EFD937 /* FeaturedItem.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E183E362C613F4A00E1E5BD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6E18ADBE2C3D79E9003DC6CD /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		6E2AC5E42C3C61DA00EFD937 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6E2AC5EB2C3C6B6700EFD937 /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				6E55B3902C3AC88500E5BF39 /* Tab.swift */,
 				6E18ADBE2C3D79E9003DC6CD /* PreferenceKeys.swift */,
 				6E2F49452C3EC6D900596113 /* Course.swift */,
+				6E183E362C613F4A00E1E5BD /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				6E2AC5EC2C3C6B6700EFD937 /* FeaturedItem.swift in Sources */,
 				6EE0079C2C582AD10017608E /* Animations.swift in Sources */,
 				6E18ADBF2C3D79E9003DC6CD /* PreferenceKeys.swift in Sources */,
+				6E183E372C613F4A00E1E5BD /* Model.swift in Sources */,
 				6E55B38F2C3ABCFF00E5BF39 /* TabBar.swift in Sources */,
 				6E2F49442C3EC1D500596113 /* AnimatableFontModifier.swift in Sources */,
 			);
