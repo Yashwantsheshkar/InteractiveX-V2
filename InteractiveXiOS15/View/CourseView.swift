@@ -15,6 +15,7 @@ struct CourseView: View {
     @State var appear = [false, false, false]
     @EnvironmentObject var model: Model
     @State var viewState: CGSize = .zero
+    @State var isDraggable = true
     
     var body: some View {
         ZStack {
@@ -27,20 +28,7 @@ struct CourseView: View {
             .scaleEffect(viewState.width / -500 + 1)
             .background(.black.opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        guard value.translation.width > 0 else {return}
-                        
-                        viewState = value.translation
-                        
-                    }
-                    .onEnded { value in
-                        withAnimation(.easeInOut) {
-                            viewState = .zero
-                        }
-                    }
-            )
+            .gesture(isDraggable ? drag : nil)
             .ignoresSafeArea()
             
             Button{
@@ -163,6 +151,51 @@ struct CourseView: View {
     )
     .offset(y: 250)
     .padding(20)
+    }
+    
+    var drag: some Gesture {
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            .onChanged { value in
+                guard value.translation.width > 0 else {return}
+                
+                if value.startLocation.x < 100 {
+                    withAnimation(.easeInOut) {
+                        viewState = value.translation
+                    }
+                    
+                }
+                
+                if viewState.width > 120{
+                    close()
+                }
+                
+            }
+            .onEnded { value in
+                if viewState.width > 80 {
+                    close()
+                } else {
+                    withAnimation(.easeInOut) {
+                        viewState = .zero
+                    }
+                }
+               
+                
+            }
+    }
+    
+    func close() {
+        
+            withAnimation (.easeInOut.delay(0.3)) {
+                show.toggle()
+                model.showDetail.toggle()
+            }
+        
+        withAnimation(.easeInOut) {
+            viewState = .zero
+        }
+        
+        isDraggable = false
+    
     }
 }
 
