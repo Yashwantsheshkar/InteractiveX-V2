@@ -11,6 +11,7 @@ struct AccountView: View {
     
     @State var isDeleted = false
     @State var isPin = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationStack {
@@ -23,6 +24,9 @@ struct AccountView: View {
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Account")
+            .navigationBarItems(trailing: Button{ presentationMode.wrappedValue.dismiss() } label: {
+                Text("Done").bold()
+            })
         }
     }
     
