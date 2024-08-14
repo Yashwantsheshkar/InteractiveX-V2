@@ -13,6 +13,7 @@ struct SearchView: View {
     @State var text = ""
     @State var show = false
     @Namespace var namespace
+    @State var selectedIndex = 0
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -61,39 +62,45 @@ struct SearchView: View {
             } label: {
                 Text("Done").bold()
             })
+            .sheet(isPresented: $show) {
+                CourseView(namespace: namespace, course: courses[selectedIndex], show: $show)
+            }
         }
     }
     
     //MARK: - Content
     
     var content: some View {
-        ForEach(courses.filter { $0.title.contains(text) || text == "" }) { item in
-            Button{
-                show = true
-            } label: {
-                HStack(alignment: .top, spacing: 12.0) {
-                    Image(item.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 44, height: 44, alignment: .center)
-                        .background(Color("Background"))
-                        .mask(Circle())
-                    VStack(alignment: .leading, spacing: 4.0) {
-                        Text(item.title)
-                            .bold()
-                        Text(item.text)
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .multilineTextAlignment(.leading)
+        ForEach(Array(courses.enumerated()), id: \.offset) { index, item in
+            if item.title.contains(text) || text == "" {
+                if index != 0 { Divider() }
+                Button{
+                    show = true
+                    selectedIndex = index
+                } label: {
+                    HStack(alignment: .top, spacing: 12.0) {
+                        Image(item.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 44, height: 44, alignment: .center)
+                            .background(Color("Background"))
+                            .mask(Circle())
+                        VStack(alignment: .leading, spacing: 4.0) {
+                            Text(item.title)
+                                .bold()
+                                .foregroundColor(.primary)
+                            Text(item.text)
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .multilineTextAlignment(.leading)
+                        }
                     }
-                }
-                .padding(.vertical, 4)
-            .listRowSeparator(.hidden)
+                    .padding(.vertical, 4)
+                .listRowSeparator(.hidden)
             }
-            .sheet(isPresented: $show) {
-                CourseView(namespace: namespace, course: courses[1], show: $show)
             }
+            
             
         }
     }
