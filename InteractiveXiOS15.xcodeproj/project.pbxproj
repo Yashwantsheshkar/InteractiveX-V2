@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E1324322C6D092D00B7001C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1324312C6D092D00B7001C /* SignUpView.swift */; };
 		6E183E372C613F4A00E1E5BD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E183E362C613F4A00E1E5BD /* Model.swift */; };
 		6E18ADBF2C3D79E9003DC6CD /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E18ADBE2C3D79E9003DC6CD /* PreferenceKeys.swift */; };
 		6E2AC5E52C3C61DA00EFD937 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2AC5E42C3C61DA00EFD937 /* HomeView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E1324312C6D092D00B7001C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		6E183E362C613F4A00E1E5BD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6E18ADBE2C3D79E9003DC6CD /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		6E2AC5E42C3C61DA00EFD937 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				6E2F49472C3ED3B400596113 /* MatchView.swift */,
 				6ED8CF182C57008E0000F0DF /* CourseView.swift */,
 				6E8A6B322C6AA108005D3179 /* SearchView.swift */,
+				6E1324312C6D092D00B7001C /* SignUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				6E73B03C2C31967C00FA5559 /* InteractiveXiOS15App.swift in Sources */,
 				6ED8CF172C56FA510000F0DF /* CourseItem.swift in Sources */,
 				6E2AC5EC2C3C6B6700EFD937 /* FeaturedItem.swift in Sources */,
+				6E1324322C6D092D00B7001C /* SignUpView.swift in Sources */,
 				6EE0079C2C582AD10017608E /* Animations.swift in Sources */,
 				6E18ADBF2C3D79E9003DC6CD /* PreferenceKeys.swift in Sources */,
 				6E183E372C613F4A00E1E5BD /* Model.swift in Sources */,
